@@ -1,7 +1,12 @@
 package br.ucsal.gestaoHospitalar.entity;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import br.ucsal.gestaoHospitalar.entity.enums.Especialidade;
 
+@Entity
+@DiscriminatorValue(value = "E")
 public class Enfermeiro extends Funcionario{
 	private String coren;
 	private Especialidade especialidade;

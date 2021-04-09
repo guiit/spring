@@ -2,14 +2,19 @@ package br.ucsal.gestaoHospitalar.entity;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public abstract class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Long id;
+	protected Long idPessoa;
 	protected String nome;
 	protected Date dataNascimento;
 	protected String sexo;
@@ -17,8 +22,8 @@ public abstract class Pessoa {
 	protected String cpf;
 	protected Endereco endereco;
 	
-	public Long getId() {
-		return id;
+	public Long getIdPessoa() {
+		return idPessoa;
 	}
 	public String getNome() {
 		return nome;

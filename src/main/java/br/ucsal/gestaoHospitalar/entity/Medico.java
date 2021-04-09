@@ -1,11 +1,17 @@
 package br.ucsal.gestaoHospitalar.entity;
 
+import javax.persistence.DiscriminatorValue;
+import javax.persistence.Entity;
+
 import br.ucsal.gestaoHospitalar.entity.enums.Especialidade;
 
+@Entity
+@DiscriminatorValue(value = "M")
 public class Medico {
 
 	private String crm;
 	private Especialidade especialidade;
+	
 	public String getCrm() {
 		return crm;
 	}
