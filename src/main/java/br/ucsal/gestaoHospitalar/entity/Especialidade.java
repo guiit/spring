@@ -1,4 +1,4 @@
-package br.ucsal.gestaoHospitalar.entity.enums;
+package br.ucsal.gestaoHospitalar.entity;
 
 public enum Especialidade {
 	Cirurgião,
