@@ -13,7 +13,7 @@ public class FuncionarioService {
 	@Autowired
     private FuncionarioRepository respo;
 	
-	public Funcionario  getPaciente(Long id) {
+	public Funcionario  getFuncionario(Long id) {
 		return respo.findById(id).get();
 	}
 	
