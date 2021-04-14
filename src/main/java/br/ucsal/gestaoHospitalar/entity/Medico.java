@@ -5,7 +5,7 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue(value = "M")
-public class Medico {
+public class Medico extends Funcionario{
 
 	private String crm;
 	private Especialidade especialidade;

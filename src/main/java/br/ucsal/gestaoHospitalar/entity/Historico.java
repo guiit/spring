@@ -1,15 +1,19 @@
 package br.ucsal.gestaoHospitalar.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 @Entity
 public class Historico {
-
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 	Medicamento[] medicamentos;
 	Medicacao[] medicacoes;
 	String[] efeitosColaterais;
-	Procedimento procedimento;
+//	Procedimento procedimento;
 	
 	public Long getId() {
 		return id;
@@ -35,12 +39,12 @@ public class Historico {
 	public void setEfeitosColaterais(String[] efeitosColaterais) {
 		this.efeitosColaterais = efeitosColaterais;
 	}
-	public Procedimento getProcedimento() {
-		return procedimento;
-	}
-	public void setProcedimento(Procedimento procedimento) {
-		this.procedimento = procedimento;
-	}
+//	public Procedimento getProcedimento() {
+//		return procedimento;
+//	}
+//	public void setProcedimento(Procedimento procedimento) {
+//		this.procedimento = procedimento;
+//	}
 	
 
 	
