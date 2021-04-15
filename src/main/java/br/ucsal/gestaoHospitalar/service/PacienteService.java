@@ -17,8 +17,7 @@ public class PacienteService {
     private PacienteRepository respo;
 
 	public List<Paciente> gePacientes() {
-		System.out.println(respo);
-		return respo.findAll();
+		return this.respo.findAll();
 	}
 	
 	public Paciente getPaciente(Long id) {

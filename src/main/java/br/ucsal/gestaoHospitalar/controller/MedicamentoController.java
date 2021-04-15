@@ -1,5 +1,6 @@
 package br.ucsal.gestaoHospitalar.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,12 +10,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.ucsal.gestaoHospitalar.entity.Medicamento;
+import br.ucsal.gestaoHospitalar.service.MedicacaoService;
 import br.ucsal.gestaoHospitalar.service.MedicamentoService;
 
 @Controller
 @RequestMapping("/medicamento")
 public class MedicamentoController {
-	private MedicamentoService service = new MedicamentoService(); 
+	@Autowired
+	private MedicamentoService service;
 	@GetMapping("/consultar")
 	public String exibirFormConsultar(Model model) {
 		

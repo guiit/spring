@@ -2,6 +2,7 @@ package br.ucsal.gestaoHospitalar.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,12 +12,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.ucsal.gestaoHospitalar.entity.Procedimento;
+import br.ucsal.gestaoHospitalar.service.PacienteService;
 import br.ucsal.gestaoHospitalar.service.ProcedimentoService;
 
 @Controller
 @RequestMapping("/procedimento")
 public class ProcedimentoController {
-	private ProcedimentoService service = new ProcedimentoService(); 
+    @Autowired
+    private ProcedimentoService service;
 	@GetMapping("/consultar")
 	public String exibirFormConsultar(Model model) {
 		
