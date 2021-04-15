@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Gestão Hospitalar</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Cadastrar novo Procedimento</h1>
+        <br />
+        <form action="#" th:action="@{/save}" th:object="${product}"
+            method="post">
+ 
+            <table border="0" cellpadding="10">
+                <tr>
+                    <td>tipo:</td>
+                    <td><input type="text" th:field="*{name}" /></td>
+                </tr>
+                <tr>
+                    <td>especialidades utilizadas:</td>
+                    <td><input type="text" th:field="*{brand}" /></td>
+                </tr>
+                <tr>
+                    <td>funcionários:</td>
+                    <td><input type="text" th:field="*{madein}" /></td>
+                </tr>
+                <tr>
+                    <td>tipo de atendimento:</td>
+                    <td><input type="text" th:field="*{price}" /></td>
+                </tr>                            
+                <tr>
+                    <td>ocorrências:</td>
+                    <td><input type="text" th:field="*{price}" /></td>
+                </tr>                            
+                <tr>
+                    <td>diagnósticos:</td>
+                    <td><input type="text" th:field="*{price}" /></td>
+                </tr>                            
+                <tr>
+                    <td>espaços:</td>
+                    <td><input type="text" th:field="*{price}" /></td>
+                </tr>                            
+                <tr>
+                    <td>inicio:</td>
+                    <td><input type="text" th:field="*{price}" /></td>
+                </tr>                            
+                <tr>
+                    <td>fim:</td>
+                    <td><input type="text" th:field="*{price}" /></td>
+                </tr>                            
+                <tr>
+                    <td>custo total:</td>
+                    <td><input type="text" th:field="*{price}" /></td>
+                </tr>                            
+                <tr>
+                    <td colspan="2"><button type="submit">Save</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</body>
+</html>
