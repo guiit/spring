@@ -44,13 +44,7 @@ public class Historico {
 	public void setEfeitosColaterais(String[] efeitosColaterais) {
 		this.efeitosColaterais = efeitosColaterais;
 	}
-//	public Procedimento getProcedimento() {
-//		return procedimento;
-//	}
-//	public void setProcedimento(Procedimento procedimento) {
-//		this.procedimento = procedimento;
-//	}
-	
+
 
 	
 	
