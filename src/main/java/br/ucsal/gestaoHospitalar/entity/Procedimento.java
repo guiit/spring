@@ -18,6 +18,7 @@ public abstract class Procedimento {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
+	protected String diagnostico;
 	protected TipoProcedimento tipo;
 	protected Funcionario[] funcionario;
 	@OneToOne(cascade = CascadeType.ALL)
