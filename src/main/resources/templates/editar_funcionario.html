@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Gestão Hospitalar</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Editar funcionario</h1>
+        <br />
+    <form action="#" th:action="@{/editar/{id}(id=${${funcionario}.id_pessoa})}"th:object="${funcionario}" method="post">
+    <label for="funcao">Função</label>
+    <input type="text" value="${funcionario}.funcao" th:field="*{funcao}"  id="funcao" placeholder="Funcao">
+    <label for="matricula">Matricula</label>
+    <input type="text"  th:field="*{matricula}" id="matricula" placeholder="Matricula">
+    <label for="salario">Salario</label>
+    <input type="text"  th:field="*{salario}" id="salario" placeholder="Salario">
+    <label for="tipo">Tipo</label>
+    <input type="text"  th:field="*{tipo}" id="tipo" placeholder="Tipo">
+    
+
+    
+    
+    <button>enviar</button>
+     
+</form>
+    </div>
+</body>
+</html>
