@@ -1,5 +1,7 @@
 package br.ucsal.gestaoHospitalar.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.ucsal.gestaoHospitalar.entity.Funcionario;
+import br.ucsal.gestaoHospitalar.entity.Paciente;
 import br.ucsal.gestaoHospitalar.service.FuncionarioService;
 import br.ucsal.gestaoHospitalar.service.HistoricoService;
 
@@ -21,6 +24,9 @@ public class FuncionarioController {
 	private FuncionarioService service;
 	@GetMapping()
 	public String exibirFormConsultar(Model model) {
+		
+		List<Funcionario> funcionarios = service.findAll();
+		model.addAttribute("funcionarios", funcionarios);
 		
 		return "funcionario";
 	}

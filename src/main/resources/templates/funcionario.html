@@ -14,23 +14,22 @@
         <thead>
             <tr>
                 <th>ID</th>
-                <th>Nome</th>
-                <th>Data de Nascimento</th>
-                <th>sexo</th>
-                <th>telefone</th>
-                <th>cpf</th>
-                <th>salario</th>
-                <th>matricula</th>
-                <th>função</th>
+                <th>Função</th>
+                <th>Função</th>
+                <th>Matrícula</th>
+                <th>Salário</th>
+                <th>Tipo</th>
+                
             </tr>
         </thead>
         <tbody>
             <tr th:each="funcionario : ${funcionarios}">
-                <td th:text="${product.name}">Nome</td>
-    
-                <td th:text="${funcionario.cpf}">cpf</td>
-              
-         
+                <td th:text="${funcionario.idPessoa}">id</td>
+                <td th:text="${funcionario.funcao}">Função</td>
+                <td th:text="${funcionario.matricula}">Matrícula</td>
+                <td th:text="${funcionario.salario}">Salário</td>
+                <td th:text="${funcionario.tipo}">Tipo</td>
+
             </tr>
         </tbody>
     </table>

@@ -1,5 +1,7 @@
 package br.ucsal.gestaoHospitalar.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +17,10 @@ public class FuncionarioService {
 	
 	public Funcionario  getFuncionario(Long id) {
 		return respo.findById(id).get();
+	}
+	
+	public List<Funcionario>  findAll() {
+		return respo.findAll();
 	}
 	
 	public void insert(Funcionario funcionario) {
