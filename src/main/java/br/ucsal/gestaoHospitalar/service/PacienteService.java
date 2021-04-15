@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import br.ucsal.gestaoHospitalar.entity.Paciente;
 import br.ucsal.gestaoHospitalar.repository.PacienteRepository;
 
@@ -14,6 +15,11 @@ public class PacienteService {
 
 	@Autowired
     private PacienteRepository respo;
+
+	public List<Paciente> gePacientes() {
+		System.out.println(respo);
+		return respo.findAll();
+	}
 	
 	public Paciente getPaciente(Long id) {
 		return respo.findById(id).get();

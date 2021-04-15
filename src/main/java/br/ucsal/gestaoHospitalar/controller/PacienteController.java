@@ -1,5 +1,7 @@
 package br.ucsal.gestaoHospitalar.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -13,9 +15,19 @@ import br.ucsal.gestaoHospitalar.entity.Paciente;
 import br.ucsal.gestaoHospitalar.service.PacienteService;
 
 @Controller
-@RequestMapping("/paciente")
+@RequestMapping("/pacientes")
 public class PacienteController {
 	private PacienteService service = new PacienteService();
+	
+	@GetMapping
+	public String viewPacientePage(Model model) {
+		List<Paciente> pacientes = service.gePacientes();
+		System.out.println(pacientes);
+		model.addAttribute("pacientes", pacientes);
+		return "pacientes";
+	}
+
+
 	@GetMapping("/consultar")
 	public String exibirFormConsultar(Model model) {
 		

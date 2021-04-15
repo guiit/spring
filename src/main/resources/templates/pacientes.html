@@ -8,7 +8,7 @@
 <body>
 <div align="center">
     <h1>Pacientes</h1>
-    <a href="/new">Criar novo Paciente</a>
+    <a href="/new_paciente">Criar novo Paciente</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -19,28 +19,28 @@
                 <th>sexo</th>
                 <th>telefone</th>
                 <th>cpf</th>
-                <th>histórico</th>
+                <th>endereço</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="product : ${listProducts}">
-                <td th:text="${product.id}">ID</td>
-                <td th:text="${product.name}">Nome</td>
-                <td th:text="${product.brand}">Data de Nascimento</td>
-                <td th:text="${product.madein}">sexo</td>
-                <td th:text="${product.price}">telefone</td>
-                <td th:text="${product.price}">cpf</td>
-                <td th:text="${product.price}">histórico</td>
+            <tr th:each="paciente : ${pacientes}">
+                <td th:text="${paciente.id}">ID</td>
+                <td th:text="${paciente.nome}">Nome</td>
+                <td th:text="${paciente.dataNascimento}">Data de Nascimento</td>
+                <td th:text="${paciente.sexo}">sexo</td>
+                <td th:text="${paciente.telefone}">telefone</td>
+                <td th:text="${paciente.cpf}">cpf</td>
+                <td th:text="${paciente.endereco}">endereço</td>
                 <td>
-                    <a th:href="/@{'/edit/' + ${product.id}}">Editar</a>
+                    <a th:href="/@{'/edit/' + ${paciente.id}}">Editar</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="/@{'/delete/' + ${product.id}}">Deletar</a>
+                    <a th:href="/@{'/delete/' + ${paciente.id}}">Deletar</a>
                 </td>
             </tr>
         </tbody>
     </table>
     <br />
-    <a href="/index.html">Voltar</a>
+    <a href="/">Voltar</a>
 </div>   
 </body>
 </html>
