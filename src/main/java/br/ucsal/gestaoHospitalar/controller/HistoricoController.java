@@ -52,7 +52,7 @@ public class HistoricoController {
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String editarHistorico(@PathVariable("id") Long id, Model model) {
+	public String getHistorico(@PathVariable("id") Long id, Model model) {
 		Historico historico = service.getHistorico(id);
 		
 		if(historico == null)
