@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Gestão Hospitalar</title>
+</head>
+<body>
+<div align="center">
+    <h1>Funcionário</h1>
+    <a href="/new">Criar novo Funcionário</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>tipo</th>
+                <th>especialidades utilizadas</th>
+                <th>funcionários</th>
+                <th>tipo de atendimento</th>
+                <th>ocorrências</th>
+                <th>diagnósticos</th>
+                <th>espaços</th>
+                <th>inicio</th>
+                <th>fim</th>
+                <th>custo total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProducts}">
+                <td th:text="${product.id}">ID</td>
+                <td th:text="${product.name}">tipo</td>
+                <td th:text="${product.brand}">especialidades utilizadas</td>
+                <td th:text="${product.madein}">funcionários</td>
+                <td th:text="${product.price}">tipo de atendimento</td>
+                <td th:text="${product.price}">ocorrências</td>
+                <td th:text="${product.price}">diagnósticos</td>
+                <td th:text="${product.price}">espaços</td>
+                <td th:text="${product.price}">inicio</td>
+                <td th:text="${product.price}">fim</td>
+                <td th:text="${product.price}">custo total</td>
+                <td>
+                    <a th:href="/@{'/edit/' + ${product.id}}">Editar</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="/@{'/delete/' + ${product.id}}">Deletar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <a href="/index.html">Voltar</a>
+</div>   
+</body>
+</html>

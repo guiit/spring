@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Gestão Hospitalar</title>
+</head>
+<body>
+<div align="center">
+    <h1>Medicamentos</h1>
+    <a href="/new">Criar novo Medicamento</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>descrição</th>
+                <th>unidade de medida</th>
+                <th>quantidade</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProducts}">
+                <td th:text="${product.id}">ID</td>
+                <td th:text="${product.name}">descrição</td>
+                <td th:text="${product.brand}">unidade de medida</td>
+                <td th:text="${product.madein}">quantidade</td>
+                <td>
+                    <a th:href="/@{'/edit/' + ${product.id}}">Editar</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="/@{'/delete/' + ${product.id}}">Deletar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <a href="/index.html">Voltar</a>
+</div>   
+</body>
+</html>

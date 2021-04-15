@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Gestão Hospitalar</title>
+</head>
+<body>
+<div align="center">
+    <h1>Médicos</h1>
+    <a href="/new">Criar novo Médico</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Data de Nascimento</th>
+                <th>sexo</th>
+                <th>telefone</th>
+                <th>cpf</th>
+                <th>salario</th>
+                <th>matricula</th>
+                <th>função</th>
+                <th>especialidade</th>
+                <th>CRM</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listProducts}">
+                <td th:text="${product.id}">ID</td>
+                <td th:text="${product.name}">Nome</td>
+                <td th:text="${product.brand}">Data de Nascimento</td>
+                <td th:text="${product.madein}">sexo</td>
+                <td th:text="${product.price}">telefone</td>
+                <td th:text="${product.price}">cpf</td>
+                <td th:text="${product.price}">salario</td>
+                <td th:text="${product.price}">matricula</td>
+                <td th:text="${product.price}">função</td>
+                <td th:text="${product.price}">especialidade</td>
+                <td th:text="${product.price}">crm</td>
+                <td>
+                    <a th:href="/@{'/edit/' + ${product.id}}">Editar</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="/@{'/delete/' + ${product.id}}">Deletar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <a href="/index.html">Voltar</a>
+</div>   
+</body>
+</html>
