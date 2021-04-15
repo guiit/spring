@@ -13,19 +13,19 @@ import br.ucsal.gestaoHospitalar.repository.ProcedimentoRepository;
 @Transactional
 public class ProcedimentoService {
 	@Autowired
-    private ProcedimentoRepository respo;
+    private ProcedimentoRepository repo;
 	
 	public Procedimento getProcedimento(Long id) {
-		return respo.findById(id).get();
+		return repo.findById(id).get();
 	}
 	
 	
 	public void insert(Procedimento procedimento) {
-		respo.save(procedimento);
+		repo.save(procedimento);
 	}
 	
 	public List<Procedimento> findAll() {
-		return respo.findAll();
+		return repo.findAll();
 	}
 	
 	
@@ -34,6 +34,6 @@ public class ProcedimentoService {
 	}
 	
 	public void delete(Procedimento procedimento) {
-		respo.delete(procedimento);
+		repo.delete(procedimento);
 	}
 }

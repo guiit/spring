@@ -1,5 +1,7 @@
 package br.ucsal.gestaoHospitalar.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.ucsal.gestaoHospitalar.entity.Historico;
+import br.ucsal.gestaoHospitalar.entity.Procedimento;
 import br.ucsal.gestaoHospitalar.service.HistoricoService;
 
 @Controller
@@ -31,8 +34,10 @@ public class HistoricoController {
 		return "consultar-historico";
 	}
 	
-	@GetMapping("/inserir")
+	@GetMapping("/list")
 	public String exibirFormHistorico(Model model) {
+		List<Historico> historicos = service.findAll();
+		model.addAttribute("historicos", historicos);
 		
 		return "historico-form";
 	}

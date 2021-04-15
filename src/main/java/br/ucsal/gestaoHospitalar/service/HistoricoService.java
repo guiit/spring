@@ -1,9 +1,12 @@
 package br.ucsal.gestaoHospitalar.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import br.ucsal.gestaoHospitalar.entity.Historico;
+import br.ucsal.gestaoHospitalar.entity.Procedimento;
 import br.ucsal.gestaoHospitalar.repository.HistoricoRepository;
 
 @Service
@@ -26,5 +29,9 @@ public class HistoricoService {
 	
 	public void delete(Historico historico) {
 		repo.delete(historico);
+	}
+	
+	public List<Historico> findAll() {
+		return repo.findAll();
 	}
 }
