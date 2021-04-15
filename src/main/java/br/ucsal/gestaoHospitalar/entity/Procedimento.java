@@ -47,18 +47,7 @@ public abstract class Procedimento {
 	public void setFuncionario(Funcionario[] funcionario) {
 		this.funcionario = funcionario;
 	}
-//	public Diagnostico[] getDiagnostico() {
-//		return diagnostico;
-//	}
-//	public void setDiagnostico(Diagnostico[] diagnostico) {
-//		this.diagnostico = diagnostico;
-//	}
-//	public Espaco[] getEspaco() {
-//		return Espaco;
-//	}
-//	public void setEspaco(Espaco[] espaco) {
-//		Espaco = espaco;
-//	}
+
 	public Date getInicio() {
 		return inicio;
 	}
