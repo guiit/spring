@@ -19,7 +19,7 @@ import br.ucsal.gestaoHospitalar.service.HistoricoService;
 public class FuncionarioController {
 	@Autowired
 	private FuncionarioService service;
-	@GetMapping(path="")
+	@GetMapping()
 	public String exibirFormConsultar(Model model) {
 		
 		return "funcionario";
@@ -37,6 +37,8 @@ public class FuncionarioController {
 	
 	@GetMapping("/inserir")
 	public String exibirFormFuncionario(Model model) {
+		
+		model.addAttribute("funcionario", new Funcionario());
 		
 		return "new_funcionario";
 	}

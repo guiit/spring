@@ -28,10 +28,8 @@
             <tr th:each="funcionario : ${funcionarios}">
                 <td th:text="${product.name}">Nome</td>
     
-                <td th:text="${product.price}">cpf</td>
-                <td th:text="${product.price}">salario</td>
-                <td th:text="${product.price}">matricula</td>
-                <td th:text="${product.price}">função</td>
+                <td th:text="${funcionario.cpf}">cpf</td>
+              
          
             </tr>
         </tbody>

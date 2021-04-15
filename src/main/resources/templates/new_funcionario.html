@@ -9,11 +9,15 @@
     <div align="center">
         <h1>Cadastrar novo funcionario</h1>
         <br />
-      <form action="#" th:action="@{/funcionario/inserir}" th:object="${funcionario}" method="post">
-    <label for="nome">Name</label>
-    <input type="text"  id="nome" placeholder="Nome">
-    <label for="cpf">Cpf</label>
-     <input type="text"  id="cpf" placeholder="Cpf">
+    <form action="/funcionario/inserir"  th:object="${funcionario}" method="post">
+    <label for="funcao">Função</label>
+    <input type="text" th:field="*{funcao}"  id="funcao" placeholder="Funcao">
+    <label for="matricula">Matricula</label>
+    <input type="text"  th:field="*{matricula}" id="matricula" placeholder="Matricula">
+    <label for="salario">Salario</label>
+    <input type="text"  th:field="*{salario}" id="salario" placeholder="Salario">
+     <label for="tipo">Tipo</label>
+    <input type="text"  th:field="*{tipo}" id="tipo" placeholder="Tipo">
     
 
     
