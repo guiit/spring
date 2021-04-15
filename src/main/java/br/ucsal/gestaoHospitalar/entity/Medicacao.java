@@ -8,16 +8,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Medicacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	/*@OneToMany(cascade=CascadeType.ALL, targetEntity=Medicamento.class)
-	@JoinColumn(name="id")
-	private Medicamento medicamento;*/
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "medicamentoId")
+	private Medicamento medicamento;
 	private float dosagem;
 	private LocalDateTime dateTime;
 	
@@ -28,12 +28,12 @@ public class Medicacao {
 	public void setId(Long id) {
 		this.id = id;
 	}
-//	public Medicamento getMedicamento() {
-//		return medicamento;
-//	}
-//	public void setMedicamento(Medicamento medicamento) {
-//		this.medicamento = medicamento;
-//	}
+	public Medicamento getMedicamento() {
+		return medicamento;
+	}
+	public void setMedicamento(Medicamento medicamento) {
+		this.medicamento = medicamento;
+	}
 	public float getDosagem() {
 		return dosagem;
 	}
