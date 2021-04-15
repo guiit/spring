@@ -36,6 +36,7 @@ public class ProcedimentoController {
 	@GetMapping("/list")
 	public String exibirFormProcedimento(Model model) {
 		List<Procedimento> procedimentos = service.findAll();
+		model.addAttribute('procedimentos', procedimentos);
 		return "procedimento-form";
 	}
 	
