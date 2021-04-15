@@ -21,11 +21,11 @@ public class PacienteController {
 	
     @Autowired
     private PacienteService service;
-	@GetMapping(path="/teste")
+	@GetMapping(path="")
 	public String viewPacientePage(Model model) {
 		List<Paciente> pacientes = service.gePacientes();
-		System.out.println(pacientes);
 		model.addAttribute("pacientes", pacientes);
+
 		return "pacientes";
 	}
 
@@ -53,13 +53,19 @@ public class PacienteController {
 		return "paciente-form";
 	}
 	
-	@PostMapping("/inserir")
+	@GetMapping(path="/new-paciente")
+	public String viewPacienteaPage(Model model) {
+		
+		return "new_pacientes";
+	}
+	
+	@PostMapping(path="/new-paciente")
 	public String inserirPaciente(@Validated Paciente paciente, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-            return "paciente-form";
+            return "index";
         }
 		service.insert(paciente);
-		return "redirect:/consultar-paciente";
+		return "redirect:/pacientes";
 	}
 	
 	
