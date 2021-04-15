@@ -1,9 +1,12 @@
 package br.ucsal.gestaoHospitalar.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Historico {
@@ -13,7 +16,9 @@ public class Historico {
 	Medicamento[] medicamentos;
 	Medicacao[] medicacoes;
 	String[] efeitosColaterais;
-//	Procedimento procedimento;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "procedimentoId")
+	Procedimento procedimento;
 	
 	public Long getId() {
 		return id;

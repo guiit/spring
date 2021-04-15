@@ -20,8 +20,9 @@ public abstract class Procedimento {
 	protected Long id;
 	protected TipoProcedimento tipo;
 	protected Funcionario[] funcionario;
-//	protected Diagnostico[] diagnostico;
-//	protected Espaco[] Espaco;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "espacoId")
+	protected Espaco[] Espaco;
 	protected Date fim;
 	protected String cpf;
 	protected Date inicio;
