@@ -1,5 +1,7 @@
 package br.ucsal.gestaoHospitalar.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -31,9 +33,9 @@ public class ProcedimentoController {
 		return "consultar-procedimento";
 	}
 	
-	@GetMapping("/inserir")
+	@GetMapping("/list")
 	public String exibirFormProcedimento(Model model) {
-		
+		List<Procedimento> procedimentos = service.findAll();
 		return "procedimento-form";
 	}
 	

@@ -1,5 +1,7 @@
 package br.ucsal.gestaoHospitalar.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,9 +19,15 @@ public class ProcedimentoService {
 		return respo.findById(id).get();
 	}
 	
+	
 	public void insert(Procedimento procedimento) {
 		respo.save(procedimento);
 	}
+	
+	public List<Procedimento> findAll() {
+		return respo.findAll();
+	}
+	
 	
 	public void update(Procedimento procedimento) {
 		
