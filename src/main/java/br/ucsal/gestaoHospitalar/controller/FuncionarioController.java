@@ -69,5 +69,15 @@ public class FuncionarioController {
 		return "redirect:/funcionario";
 	}
 	
+	@GetMapping("/by/deletar/{id}")
+	public String deletarFuncionário(@PathVariable("id") long id, Model model) {
+		Funcionario funcionario = service.getFuncionario(id);
+		if(funcionario == null)
+			throw new IllegalArgumentException("Não existe funcionario no sistema com este ID: "+id);
+		service.delete(funcionario);
+		
+		return "redirect:/funcionario";
+	}
+	
 	
 }

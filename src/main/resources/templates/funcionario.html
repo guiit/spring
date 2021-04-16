@@ -18,6 +18,8 @@
                 <th>Matrícula</th>
                 <th>Salário</th>
                 <th>Tipo</th>
+                <th>Ação</th>
+                
                 
             </tr>
         </thead>
@@ -28,6 +30,11 @@
                 <td th:text="${funcionario.matricula}">Matrícula</td>
                 <td th:text="${funcionario.salario}">Salário</td>
                 <td th:text="${funcionario.tipo}">Tipo</td>
+                <td>
+                    <a th:href="@{/funcionario/editar/{id}(id=${funcionario.idPessoa})}">Editar</a>
+                    
+                    <a th:href="@{/funcionario/by/deletar/{id}(id=${funcionario.idPessoa})}">Deletar</a>
+                </td>
 
             </tr>
         </tbody>
