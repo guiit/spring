@@ -1,5 +1,7 @@
 package br.ucsal.gestaoHospitalar.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.ucsal.gestaoHospitalar.entity.Medicacao;
-import br.ucsal.gestaoHospitalar.service.HistoricoService;
 import br.ucsal.gestaoHospitalar.service.MedicacaoService;
 
 @Controller
@@ -18,58 +19,51 @@ import br.ucsal.gestaoHospitalar.service.MedicacaoService;
 public class MedicacaoController {
 	@Autowired
 	private MedicacaoService service;
-	@GetMapping("/consultar")
+	@GetMapping()
 	public String exibirFormConsultar(Model model) {
 		
-		return "consultar-medicacao";
-	}
-	
-	@PostMapping("/consultar/{id}")
-	public String consultarMedicacao(@PathVariable(name = "id") Long id, Model model) {
-		Medicacao medicacao = service.getMedicacao(id);
-			    
-		if(medicacao == null)
-			throw new IllegalArgumentException("Não existe uma medicação no sistema com este ID: "+id);
-		model.addAttribute("medicacao", medicacao);
-		return "consultar-medicacao";
+		List<Medicacao> medicacoes = service.findAll();
+		model.addAttribute("medicacoes", medicacoes);
+		
+		return "medicacao";
 	}
 	
 	@GetMapping("/inserir")
 	public String exibirFormMedicacao(Model model) {
 		
-		return "medicacao-form";
+		model.addAttribute("medicacao", new Medicacao());
+		
+		return "new_medicacao";
 	}
 	
 	@PostMapping("/inserir")
 	public String inserirMedicacao(@Validated Medicacao medicacao, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-            return "medicacao-form";
+            return "redirect:/";
         }
 		service.insert(medicacao);
-		return "redirect:/consultar-medicacao";
+		return "redirect:/medicacao";
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String editarMedicacao(@PathVariable("id") Long id, Model model) {
-		Medicacao medicacao = service.getMedicacao(id);
-		
+	public String get(@PathVariable("id") Long id, Model model) {
+
+		Medicacao medicacao= service.getMedicacao(id);
 		if(medicacao == null)
-			throw new IllegalArgumentException("Não existe uma medicação no sistema com este ID: "+id);
-		
+			throw new IllegalArgumentException("Não existe medicacao no sistema com este ID: "+id);
 		model.addAttribute("medicacao", medicacao);
-		return "editar-medicacao";
+
+
+
+		return "editar_medicacao";
 	}
 	
 	@PostMapping("/editar/{id}")
 	public String editarMedicacao(@PathVariable("id") long id, @Validated Medicacao medicacao, 
 			  BindingResult result, Model model) {
-		 if (result.hasErrors()) {
-			medicacao.setId(id);
-			return "editar-medicacao";
-		}
-			        
 		service.insert(medicacao);
-		return "redirect:/consultar-medicacao";
+		
+		return "redirect:/medicacao";
 	}
 	
 	

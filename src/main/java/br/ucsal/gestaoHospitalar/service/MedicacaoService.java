@@ -1,8 +1,12 @@
 package br.ucsal.gestaoHospitalar.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import br.ucsal.gestaoHospitalar.entity.Funcionario;
 import br.ucsal.gestaoHospitalar.entity.Medicacao;
 import br.ucsal.gestaoHospitalar.repository.MedicacaoRepository;
 
@@ -14,6 +18,10 @@ public class MedicacaoService {
 	
 	public Medicacao  getMedicacao(Long id) {
 		return repo.findById(id).get();
+	}
+	
+	public List<Medicacao>  findAll() {
+		return repo.findAll();
 	}
 	
 	public void insert(Medicacao medicacao) {

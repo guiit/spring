@@ -21,51 +21,26 @@ public class PacienteController {
 	
     @Autowired
     private PacienteService service;
-	@GetMapping(path="")
+	@GetMapping()
 	public String viewPacientePage(Model model) {
-		List<Paciente> pacientes = service.gePacientes();
-		model.addAttribute("pacientes", pacientes);
-
+		
+		model.addAttribute("pacientes", service.getPacientes());
 		return "pacientes";
 	}
 
-
-	@GetMapping("/consultar")
-	public String exibirFormConsultar(Model model) {
-		
-		return "consultar-paciente";
-	}
-	
-	@PostMapping("/consultar/{id}")
-	public String consultarPaciente(@PathVariable(name = "id") Long id, Model model) {
-		Paciente paciente = service.getPaciente(id);
-		
-		if(paciente == null)
-			throw new IllegalArgumentException("Não existe paciente no sistema com este ID: "+id);
-		
-		model.addAttribute("paciente", paciente);
-		return "consultar-paciente";
-	}
-	
 	@GetMapping("/inserir")
 	public String exibirFormPaciente(Model model) {
-		
-		return "paciente-form";
-	}
-	
-	@GetMapping(path="/new-paciente")
-	public String viewPacienteaPage(Model model) {
-		
+		model.addAttribute("paciente", new Paciente());
 		return "new_pacientes";
 	}
 	
-	@PostMapping(path="/new-paciente")
+	@PostMapping("/inserir")
 	public String inserirPaciente(@Validated Paciente paciente, BindingResult result, Model model) {
 		if (result.hasErrors()) {
             return "index";
         }
 		service.insert(paciente);
-		return "redirect:/pacientes";
+		return "redirect:/";
 	}
 	
 	
@@ -77,7 +52,7 @@ public class PacienteController {
 			throw new IllegalArgumentException("Não existe paciente no sistema com este ID: "+id);
 		
 		model.addAttribute("paciente", paciente);
-		return "editar-paciente";
+		return "editar_paciente";
 	}
 	
 	@PostMapping("/editar/{id}")
@@ -85,10 +60,20 @@ public class PacienteController {
 			  BindingResult result, Model model) {
 		 if (result.hasErrors()) {
 			paciente.setIdPessoa(id);
-			return "editar-paciente";
+			return "editar_paciente";
 		}
 			        
 		service.insert(paciente);
-		return "redirect:/consultar-paciente";
+		return "redirect:/pacientes";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String deletarPaciente(@PathVariable("id") Long id, Model model) {
+		Paciente paciente = service.getPaciente(id);
+		if(paciente != null)
+			service.delete(paciente);
+			
+		model.addAttribute("pacientes", service.getPacientes());
+		return "redirect:/pacientes";
 	}
 }
