@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Gestão Hospitalar</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Editar paciente</h1>
+        <br />
+    <form action="@{/editar/{id}(id=${${paciente}.idPessoa})}" th:object="${paciente}" method="post">
+    <label for="nome">Name</label>
+    <input type="text" value="${paciente}.nome" th:field="*{nome}" id="nome" placeholder="Nome">
+    <label for="cpf">Cpf</label>
+    <input type="text" value="${paciente}.cpf" th:field="*{cpf}" id="cpf" placeholder="Cpf">
+    <label for="telefone">Telefone</label>
+    <input type="text" th:field="*{telefone}" value="${paciente}.telefone" id="telefone" placeholder="Telefone">
+    <label for="datadenascimento">Data de Nascimento</label>
+    <input type="date" th:field="*{dataNascimento}" value="${paciente}.dataNascimento" id="datadenascimento" placeholder="Data de Nascimento">
+    <label for="sexo">Sexo</label>
+    <input type="text" value="${paciente}.sexo" th:field="*{sexo}" id="sexo" placeholder="Sexo">
+    <input type="hidden" value="${paciente}.idPessoa" th:field="*{sexo}" id="sexo" placeholder="Sexo">
+    
+
+    
+    
+    <button>enviar</button>
+     
+</form>
+    </div>
+</body>
+</html>
