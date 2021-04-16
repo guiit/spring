@@ -55,8 +55,7 @@ public class FuncionarioController {
 		if(funcionario == null)
 			throw new IllegalArgumentException("Não existe funcionario no sistema com este ID: "+id);
 		model.addAttribute("funcionario", funcionario);
-		 System.out.println("chegou");
-		 System.out.println(funcionario.idPessoa);
+
 
 
 		return "editar_funcionario";
