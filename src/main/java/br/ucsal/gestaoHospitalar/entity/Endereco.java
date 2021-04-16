@@ -19,6 +19,9 @@ public class Endereco {
 	public Long getId() {
 		return id;
 	}
+	public void setId(Long Id) {
+		this.id = id;
+	}
 	public String getRua() {
 		return rua;
 	}
