@@ -66,4 +66,15 @@ public class PacienteController {
 		service.insert(paciente);
 		return "redirect:/pacientes";
 	}
+	
+	@GetMapping("/delete/{id}")
+	public String deletarPaciente(@PathVariable("id") Long id, Model model) {
+		Paciente paciente = service.getPaciente(id);
+		
+		if(paciente == null)
+			throw new IllegalArgumentException("Não existe paciente no sistema com este ID: "+id);
+		
+		model.addAttribute("paciente", paciente);
+		return "redirect:/pacientes";
+	}
 }
