@@ -20,16 +20,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="product : ${listProducts}">
-                <td th:text="${product.id}">ID</td>
-                <td th:text="${product.name}">medicamento</td>
-                <td th:text="${product.brand}">dosagem</td>
-                <td th:text="${product.madein}">dataHora</td>
+            <tr th:each="medicacao : ${medicacoes}">
+                <td th:text="${medicacao.id}">id</td>
+                <td th:text="${medicacao.medicamento}">Medicamento</td>
+                <td th:text="${medicacao.dosagem}">Dosagem</td>
+                <td th:text="${medicacao.dateTime}">Data</td>
                 <td>
-                    <a th:href="/@{'/edit/' + ${product.id}}">Editar</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a th:href="/@{'/delete/' + ${product.id}}">Deletar</a>
+                    <a th:href="@{/medicacoes/editar/{id}(id=${medicacao.id})}">Editar</a>
+                    
+                    <a th:href="@{/medicacoes/by/deletar/{id}(id=${medicacao.id})}">Deletar</a>
                 </td>
+
             </tr>
         </tbody>
     </table>

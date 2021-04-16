@@ -66,5 +66,14 @@ public class MedicacaoController {
 		return "redirect:/medicacao";
 	}
 	
+			@GetMapping("/by/deletar/{id}")
+	public String deletarMedicacao(@PathVariable("id") long id, Model model) {
+		Medicacao medicacao = service.getMedicacao(id);
+		if(medicacao == null)
+			throw new IllegalArgumentException("Não existe medicacao no sistema com este ID: "+id);
+		service.delete(medicacao);
+		
+		return "redirect:/medicacao";
+	}
 	
 }
