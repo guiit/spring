@@ -31,16 +31,6 @@ public class FuncionarioController {
 		return "funcionario";
 	}
 	
-	@PostMapping("/consultar/{id}")
-	public String consultarFuncionario(@PathVariable(name = "id") Long id, Model model) {
-		Funcionario funcionario = service.getFuncionario(id);
-			    
-		if(funcionario == null)
-			throw new IllegalArgumentException("Não existe funcionario no sistema com este ID: "+id);
-		model.addAttribute("funcionario", funcionario);
-		return "consultar-funcionario";
-	}
-	
 	@GetMapping("/inserir")
 	public String exibirFormFuncionario(Model model) {
 		
@@ -52,33 +42,32 @@ public class FuncionarioController {
 	@PostMapping("/inserir")
 	public String inserirFuncionario(@Validated Funcionario funcionario, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-            return "funcionario-form";
+            return "redirect:/";
         }
 		service.insert(funcionario);
 		return "redirect:/funcionario";
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String editarFuncionario(@PathVariable("id") Long id, Model model) {
+	public String get(@PathVariable("id") Long id, Model model) {
+
 		Funcionario funcionario = service.getFuncionario(id);
-		
 		if(funcionario == null)
 			throw new IllegalArgumentException("Não existe funcionario no sistema com este ID: "+id);
-		
 		model.addAttribute("funcionario", funcionario);
-		return "editar-funcionario";
+		 System.out.println("chegou");
+		 System.out.println(funcionario.idPessoa);
+
+
+		return "editar_funcionario";
 	}
 	
 	@PostMapping("/editar/{id}")
-	public String editarPaciente(@PathVariable("id") long id, @Validated Funcionario funcionario, 
+	public String editarFuncionario(@PathVariable("id") long id, @Validated Funcionario funcionario, 
 			  BindingResult result, Model model) {
-		 if (result.hasErrors()) {
-			funcionario.setIdPessoa(id);
-			return "editar-funcionario";
-		}
-			        
 		service.insert(funcionario);
-		return "redirect:/consultar-funcionario";
+		
+		return "redirect:/funcionario";
 	}
 	
 	

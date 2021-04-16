@@ -9,15 +9,15 @@
     <div align="center">
         <h1>Editar funcionario</h1>
         <br />
-    <form action="#" th:action="@{/editar/{id}(id=${funcionario.idPessoa})}" th:object="${funcionario}" method="post">
+    <form action="#" th:action="@{/funcionario/editar/{id}(id=${funcionario.idPessoa})}"  th:object="${funcionario}" method="post">
     <label for="funcao">Função</label>
     <input type="text" value="${funcionario}.funcao" th:field="*{funcao}"  id="funcao" placeholder="Funcao">
     <label for="matricula">Matricula</label>
-    <input type="text"  th:field="*{matricula}" id="matricula" placeholder="Matricula">
+    <input type="text"  value="${funcionario}.matricula" th:field="*{matricula}" id="matricula" placeholder="Matricula">
     <label for="salario">Salario</label>
-    <input type="text"  th:field="*{salario}" id="salario" placeholder="Salario">
+    <input type="text"  value="${funcionario}.salario" th:field="*{salario}" id="salario" placeholder="Salario">
     <label for="tipo">Tipo</label>
-    <input type="text"  th:field="*{tipo}" id="tipo" placeholder="Tipo">
+    <input type="text"  value="${funcionario}.tipo" th:field="*{tipo}" id="tipo" placeholder="Tipo">
     
 
     
