@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8"/>
+<title>Gestão Hospitalar</title>
+</head>
+<body>
+<div align="center">
+    <h1>Endereços</h1>
+    <a href="/enderecos/inserir">Criar novo Endereço</a>
+    <br/><br/>
+    <table border="1" cellpadding="10">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Rua</th>
+                <th>Cidade</th>
+                <th>Estado</th>
+                <th>CEP</th>
+                <th>País</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="endereco : ${enderecos}">
+                <td th:text="${endereco.id}">id</td>
+                <td th:text="${endereco.rua}">Rua</td>
+                <td th:text="${endereco.cidade}">Cidade</td>
+                <td th:text="${endereco.estado}">Estado</td>
+                <td th:text="${endereco.cep}">CEP</td>
+                <td th:text="${endereco.pais}">país</td>
+                <td>
+                    <a th:href="@{/enderecos/editar/{id}(id=${endereco.id})}">Editar</a>
+                    &nbsp;&nbsp;&nbsp;
+                    <a th:href="@{/enderecos/delete/{id}(id=${paciente.idPessoa})}">Deletar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br />
+    <a href="/">Voltar</a>
+</div>   
+</body>
+</html>

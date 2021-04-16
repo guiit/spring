@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<title>Gestão Hospitalar</title>
+</head>
+<body>
+    <div align="center">
+        <h1>Editar Endereço</h1>
+        <br />
+    <form action="#" th:action="@{/enderecos/editar/{id}(id=${endereco.id})}"  th:object="${endereco}" method="post">
+        <label for="rua">Rua</label>
+        <input type="text" value="${endereco}.rua" th:field="*{rua}"  id="rua" placeholder="Rua">
+        <label for="cidade">Cidade</label>
+        <input type="text" value="${endereco}.cidade"  th:field="*{cidade}" id="cidade" placeholder="Cidade">
+        <label for="estado">Estado</label>
+        <input type="text" value="${endereco}.estado"  th:field="*{estado}" id="estado" placeholder="Estado">
+        <label for="cep">CEP</label>
+        <input type="text" value="${endereco}.cep"  th:field="*{cep}" id="cep" placeholder="CEP">
+        <label for="pai">País</label>
+        <input type="text" value="${endereco}.pais"  th:field="*{pais}" id="pais" placeholder="País">
+        <input type="hidden" th:field="*{id}" id="id">
+
+    
+
+    
+    
+    <button>enviar</button>
+     
+</form>
+    </div>
+</body>
+</html>
