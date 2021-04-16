@@ -25,12 +25,12 @@
         <tbody>
             <tr th:each="paciente : ${pacientes}">
 <!--                 <td th:text="${paciente.id}">ID</td> -->
-                <td th:text="${paciente}.nome">Nome</td>
-                <td th:text="${paciente}.dataNascimento">Data de Nascimento</td>
-                <td th:text="${paciente}.sexo">sexo</td>
-                <td th:text="${paciente}.telefone">telefone</td>
-                <td th:text="${paciente}.cpf">cpf</td>
-                <td th:text="${paciente}.endereco">endereço</td>
+                <td th:text="${paciente.nome}">Nome</td>
+                <td th:text="${paciente.dataNascimento}">Data de Nascimento</td>
+                <td th:text="${paciente.sexo}">sexo</td>
+                <td th:text="${paciente.telefone}">telefone</td>
+                <td th:text="${paciente.cpf}">cpf</td>
+                <td th:text="${paciente.endereco}">endereço</td>
                 <td> 
                     <a th:href="@{/pacientes/editar/{id}(id=${paciente.idPessoa})}">Editar</a> 
                    <!--   &nbsp;&nbsp;&nbsp; 
