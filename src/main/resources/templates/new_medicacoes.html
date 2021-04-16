@@ -7,29 +7,20 @@
 </head>
 <body>
     <div align="center">
-        <h1>Cadastrar nova Medicação</h1>
+        <h1>Cadastrar nova medicação</h1>
         <br />
-        <form action="#" th:action="@{/save}" th:object="${product}"
-            method="post">
- 
-            <table border="0" cellpadding="10">
-                <tr>
-                    <td>medicamento:</td>
-                    <td><input type="text" th:field="*{name}" /></td>
-                </tr>
-                <tr>
-                    <td>dosagem:</td>
-                    <td><input type="text" th:field="*{brand}" /></td>
-                </tr>
-                <tr>
-                    <td>dataHora:</td>
-                    <td><input type="text" th:field="*{madein}" /></td>
-                </tr>                           
-                <tr>
-                    <td colspan="2"><button type="submit">Save</button> </td>
-                </tr>
-            </table>
-        </form>
+    <form action="/medicacoes/inserir"  th:object="${medicacao}" method="post">
+    <label for="medicamento">Medicamento</label>
+    <input type="text" th:field="*{medicamento}"  id="medicamento" placeholder="Medicamento">
+    <label for="dosagem">Dosagem</label>
+    <input type="text"  th:field="*{dosagem}" id="dosagem" placeholder="Dosagem">
+    <label for="salario">Data</label>
+    <input type="text"  th:field="*{dateTime}" id="dateTime" placeholder="Data">
+
+
+    <button>enviar</button>
+     
+</form>
     </div>
 </body>
 </html>
