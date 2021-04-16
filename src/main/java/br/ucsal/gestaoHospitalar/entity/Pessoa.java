@@ -17,7 +17,7 @@ import javax.persistence.OneToOne;
 public abstract class Pessoa {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Long idPessoa;
+	public Long idPessoa;
 	protected String nome;
 	protected Date dataNascimento;
 	protected String sexo;
