@@ -15,9 +15,7 @@ public class Medicacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "medicamentoId")
-	private Medicamento medicamento;
+	private String medicamento;
 	private float dosagem;
 	private LocalDateTime dateTime;
 	
@@ -28,10 +26,10 @@ public class Medicacao {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Medicamento getMedicamento() {
+	public String getMedicamento() {
 		return medicamento;
 	}
-	public void setMedicamento(Medicamento medicamento) {
+	public void setMedicamento(String medicamento) {
 		this.medicamento = medicamento;
 	}
 	public float getDosagem() {

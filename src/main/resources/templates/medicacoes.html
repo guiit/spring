@@ -8,7 +8,7 @@
 <body>
 <div align="center">
     <h1>Medicações</h1>
-    <a href="/new">Criar nova Medicação</a>
+    <a href="/medicacao/inserir">Criar nova Medicação</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -26,9 +26,9 @@
                 <td th:text="${medicacao.dosagem}">Dosagem</td>
                 <td th:text="${medicacao.dateTime}">Data</td>
                 <td>
-                    <a th:href="@{/medicacoes/editar/{id}(id=${medicacao.id})}">Editar</a>
+                    <a th:href="@{/medicacao/editar/{id}(id=${medicacao.id})}">Editar</a>
                     
-                    <a th:href="@{/medicacoes/by/deletar/{id}(id=${medicacao.id})}">Deletar</a>
+                    <a th:href="@{/medicacao/by/deletar/{id}(id=${medicacao.id})}">Deletar</a>
                 </td>
 
             </tr>

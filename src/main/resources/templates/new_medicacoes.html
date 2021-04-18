@@ -9,7 +9,7 @@
     <div align="center">
         <h1>Cadastrar nova medicação</h1>
         <br />
-    <form action="/medicacoes/inserir"  th:object="${medicacao}" method="post">
+    <form action="/medicacao/inserir"  th:object="${medicacao}" method="post">
     <label for="medicamento">Medicamento</label>
     <input type="text" th:field="*{medicamento}"  id="medicamento" placeholder="Medicamento">
     <label for="dosagem">Dosagem</label>

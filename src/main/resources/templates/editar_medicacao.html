@@ -9,13 +9,13 @@
     <div align="center">
         <h1>Editar medicação</h1>
         <br />
-    <form action="#" th:action="@{/editar/{id}(id=${${medicacao}.id_medicacao})}"th:object="${medicacao}" method="post">
+    <form action="#" th:action="@{/medicacao/editar/{id}(id=${medicacao.id})}" th:object="${medicacao}" method="post">
     <label for="medicamento">Medicamento</label>
     <input type="text" value="${medicacao}.medicamento" th:field="*{medicamento}"  id="medicamento" placeholder="Medicamento">
     <label for="dosagem">Dosagem</label>
     <input type="text" value="${medicacao}.dosagem" th:field="*{dosagem}" id="dosagem" placeholder="Dosagem">
     <label for="dateTime">Data</label>
-    <input type="date" value="${medicamento}.quantidade" th:field="*{quantidade}" id="quantidade" placeholder="Quantidade">
+    <input type="date" value="${medicamento}.dateTime" th:field="*{dateTime}" id="dateTime" placeholder="Data/Hora">
     <input type="hidden" th:field="*{id}" id="id">
 
     

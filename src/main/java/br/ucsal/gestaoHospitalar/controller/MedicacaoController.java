@@ -25,7 +25,7 @@ public class MedicacaoController {
 		List<Medicacao> medicacoes = service.findAll();
 		model.addAttribute("medicacoes", medicacoes);
 		
-		return "medicacao";
+		return "medicacoes";
 	}
 	
 	@GetMapping("/inserir")
@@ -33,21 +33,18 @@ public class MedicacaoController {
 		
 		model.addAttribute("medicacao", new Medicacao());
 		
-		return "new_medicacao";
+		return "new_medicacoes";
 	}
 	
 	@PostMapping("/inserir")
 	public String inserirMedicacao(@Validated Medicacao medicacao, BindingResult result, Model model) {
-		if (result.hasErrors()) {
-            return "redirect:/";
-        }
 		service.insert(medicacao);
 		return "redirect:/medicacao";
 	}
 	
 	@GetMapping("/editar/{id}")
 	public String get(@PathVariable("id") Long id, Model model) {
-
+System.out.println("chegou");
 		Medicacao medicacao= service.getMedicacao(id);
 		if(medicacao == null)
 			throw new IllegalArgumentException("Não existe medicacao no sistema com este ID: "+id);
