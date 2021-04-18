@@ -10,19 +10,6 @@
         <h1>Cadastrar novo funcionario</h1>
         <br />
     <form action="/funcionario/inserir"  th:object="${funcionario}" method="post">
-    
-    <div>
-    <label for="dataNasc">Nome</label>
-    <input type="text" th:field="*{nome}"  id="nome" placeholder="Nome">
-    </div>
-    <label for="dataNasc">Data de nascimento</label>
-    <input type="text" th:field="*{dataNascimento}"  id="dataNasc" placeholder="Data de nascimento">
-    <label for="sexo">Sexo</label>
-    <input type="text" th:field="*{sexo}"  id="sexo" placeholder="Sexo">
-    <label for="telefone">Telefone</label>
-    <input type="text" th:field="*{telefone}"  id="telefone" placeholder="Telefone">                          
-    <label for="cpf">CPF</label>
-    <input type="text" th:field="*{cpf}"  id="cpf" placeholder="CPF">
     <label for="funcao">Função</label>
     <input type="text" th:field="*{funcao}"  id="funcao" placeholder="Funcao">
     <label for="matricula">Matricula</label>
