@@ -60,6 +60,7 @@ public class EnderecoController {
 	@PostMapping("/editar/{id}")
 	public String editarEndereco(@PathVariable("id") long id, @Validated Endereco endereco, 
 			  BindingResult result, Model model) {
+		endereco.idEndereco = id;
         
 		service.insert(endereco);
 		return "redirect:/enderecos";

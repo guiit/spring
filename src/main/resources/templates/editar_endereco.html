@@ -9,7 +9,7 @@
     <div align="center">
         <h1>Editar Endereço</h1>
         <br />
-    <form action="#" th:action="@{/enderecos/editar/{id}(id=${endereco.id})}"  th:object="${endereco}" method="post">
+    <form action="#" th:action="@{/enderecos/editar/{id}(id=${endereco.idEndereco})}"  th:object="${endereco}" method="post">
         <label for="rua">Rua</label>
         <input type="text" value="${endereco}.rua" th:field="*{rua}"  id="rua" placeholder="Rua">
         <label for="cidade">Cidade</label>
@@ -20,7 +20,7 @@
         <input type="text" value="${endereco}.cep"  th:field="*{cep}" id="cep" placeholder="CEP">
         <label for="pai">País</label>
         <input type="text" value="${endereco}.pais"  th:field="*{pais}" id="pais" placeholder="País">
-        <input type="hidden" th:field="*{id}" id="id">
+        <input type="hidden" th:field="*{idEndereco}" id="id">
 
     
 

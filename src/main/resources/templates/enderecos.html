@@ -24,16 +24,16 @@
         </thead>
         <tbody>
             <tr th:each="endereco : ${enderecos}">
-                <td th:text="${endereco.id}">id</td>
+                <td th:text="${endereco.idEndereco}">id</td>
                 <td th:text="${endereco.rua}">Rua</td>
                 <td th:text="${endereco.cidade}">Cidade</td>
                 <td th:text="${endereco.estado}">Estado</td>
                 <td th:text="${endereco.cep}">CEP</td>
                 <td th:text="${endereco.pais}">país</td>
                 <td>
-                    <a th:href="@{/enderecos/editar/{id}(id=${endereco.id})}">Editar</a>
+                    <a th:href="@{/enderecos/editar/{id}(id=${endereco.idEndereco})}">Editar</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="@{/enderecos/delete/{id}(id=${paciente.idPessoa})}">Deletar</a>
+                    <a th:href="@{/enderecos/delete/{id}(id=${endereco.idEndereco})}">Deletar</a>
                 </td>
             </tr>
         </tbody>

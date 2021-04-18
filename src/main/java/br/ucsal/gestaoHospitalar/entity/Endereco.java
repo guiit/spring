@@ -9,18 +9,18 @@ import javax.persistence.Id;
 public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	public Long idEndereco;
 	private String rua;
 	private String cidade;
 	private String estado;
 	private String cep;
 	private String pais;
 	
-	public Long getId() {
-		return id;
+	public Long getIdEndereco() {
+		return idEndereco;
 	}
-	public void setId(Long Id) {
-		this.id = id;
+	public void setIdEndereco(Long Id) {
+		this.idEndereco = idEndereco;
 	}
 	public String getRua() {
 		return rua;
