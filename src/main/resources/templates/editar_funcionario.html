@@ -9,7 +9,6 @@
     <div align="center">
         <h1>Editar funcionario</h1>
         <br />
-
     <form action="#" th:action="@{/funcionario/editar/{id}(id=${funcionario.idPessoa})}"  th:object="${funcionario}" method="post">
     <label for="funcao">Função</label>
     <input type="text" value="${funcionario}.funcao" th:field="*{funcao}"  id="funcao" placeholder="Funcao">
