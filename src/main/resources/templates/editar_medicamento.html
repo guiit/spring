@@ -9,7 +9,7 @@
     <div align="center">
         <h1>Editar medicamento</h1>
         <br />
-    <form action="#" th:action="@{/editar/{id}(id=${${medicamento}.id_medicamento})}"th:object="${medicamento}" method="post">
+    <form action="#" th:action="@{/medicamentos/editar/{id}(id=${medicamento.id})}"th:object="${medicamento}" method="post">
     <label for="descricao">Descrição</label>
     <input type="text" value="${medicamento}.descricao" th:field="*{descricao}"  id="descricao" placeholder="Descricao">
     <label for="unidadeDeMedida">Unidade de medida</label>

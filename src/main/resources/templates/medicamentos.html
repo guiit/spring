@@ -8,7 +8,7 @@
 <body>
 <div align="center">
     <h1>Medicamentos</h1>
-    <a href="/new">Criar novo Medicamento</a>
+    <a href="/medicamentos/inserir">Criar novo Medicamento</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -23,7 +23,7 @@
             <tr th:each="medicamento : ${medicamentos}">
                 <td th:text="${medicamento.id}">id</td>
                 <td th:text="${medicamento.descricao}">Descrição</td>
-                <td th:text="${medicamento.unidadeDemedida}">Unidade de medida</td>
+                <td th:text="${medicamento.unidadeDeMedida}">Unidade de medida</td>
                 <td th:text="${medicamento.quantidade}">Quantidade</td>
                 <td>
                     <a th:href="@{/medicamentos/editar/{id}(id=${medicamento.id})}">Editar</a>

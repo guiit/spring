@@ -15,7 +15,7 @@ import br.ucsal.gestaoHospitalar.entity.Medicamento;
 import br.ucsal.gestaoHospitalar.service.MedicamentoService;
 
 @Controller
-@RequestMapping("/medicamento")
+@RequestMapping("/medicamentos")
 public class MedicamentoController {
 	@Autowired
 	private MedicamentoService service;
@@ -23,9 +23,9 @@ public class MedicamentoController {
 	public String exibirFormConsultar(Model model) {
 		
 		List<Medicamento> medicamentos = service.findAll();
-		model.addAttribute("medicamento", medicamentos);
+		model.addAttribute("medicamentos", medicamentos);
 		
-		return "medicamento";
+		return "medicamentos";
 	}
 	
 	@GetMapping("/inserir")
@@ -42,7 +42,7 @@ public class MedicamentoController {
             return "redirect:/";
         }
 		service.insert(medicamento);
-		return "redirect:/medicamento";
+		return "redirect:/medicamentos";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -63,7 +63,7 @@ public class MedicamentoController {
 			  BindingResult result, Model model) {
 		service.insert(medicamento);
 		
-		return "redirect:/medicamento";
+		return "redirect:/medicamentos";
 	}
 	
 		@GetMapping("/by/deletar/{id}")
@@ -73,7 +73,7 @@ public class MedicamentoController {
 			throw new IllegalArgumentException("Não existe medicamento no sistema com este ID: "+id);
 		service.delete(medicamento);
 		
-		return "redirect:/medicamento";
+		return "redirect:/medicamentos";
 	}
 	
 }
