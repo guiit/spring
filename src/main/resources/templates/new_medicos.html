@@ -9,54 +9,42 @@
     <div align="center">
         <h1>Cadastrar novo Médico</h1>
         <br />
-        <form action="#" th:action="@{/save}" th:object="${product}"
-            method="post">
- 
-            <table border="0" cellpadding="10">
-                <tr>
-                    <td>Nome:</td>
-                    <td><input type="text" th:field="*{name}" /></td>
-                </tr>
-                <tr>
-                    <td>Data de Nascimento:</td>
-                    <td><input type="text" th:field="*{brand}" /></td>
-                </tr>
-                <tr>
-                    <td>Sexo:</td>
-                    <td><input type="text" th:field="*{madein}" /></td>
-                </tr>
-                <tr>
-                    <td>Telefone:</td>
-                    <td><input type="text" th:field="*{price}" /></td>
-                </tr>                            
-                <tr>
-                    <td>cpf:</td>
-                    <td><input type="text" th:field="*{price}" /></td>
-                </tr>                            
-                <tr>
-                    <td>Salário:</td>
-                    <td><input type="text" th:field="*{price}" /></td>
-                </tr>                            
-                <tr>
-                    <td>matrícula:</td>
-                    <td><input type="text" th:field="*{price}" /></td>
-                </tr>                            
-                <tr>
-                    <td>função:</td>
-                    <td><input type="text" th:field="*{price}" /></td>
-                </tr>                            
-                <tr>
-                    <td>especialidade:</td>
-                    <td><input type="text" th:field="*{price}" /></td>
-                </tr>                            
-                <tr>
-                    <td>CRM:</td>
-                    <td><input type="text" th:field="*{price}" /></td>
-                </tr>                         
-                <tr>
-                    <td colspan="2"><button type="submit">Save</button> </td>
-                </tr>
-            </table>
+        <form action="/medicos/inserir"  th:object="${medico}" method="post">
+    
+             <div>
+		    <label for="dataNasc">Nome</label>
+		    <input type="text" th:field="*{nome}"  id="nome" placeholder="Nome">
+		    </div>
+		    <label for="dataNasc">Data de nascimento</label>
+		    <input type="text" th:field="*{dataNascimento}"  id="dataNasc" placeholder="Data de nascimento">
+		    <label for="sexo">Sexo</label>
+		    <input type="text" th:field="*{sexo}"  id="sexo" placeholder="Sexo">
+		    <label for="telefone">Telefone</label>
+		    <input type="text" th:field="*{telefone}"  id="telefone" placeholder="Telefone">                          
+		    <label for="cpf">CPF</label>
+		    <input type="text" th:field="*{cpf}"  id="cpf" placeholder="CPF">
+		    <label for="funcao">Função</label>
+		    <input type="text" th:field="*{funcao}"  id="funcao" placeholder="Funcao">
+		    <label for="matricula">Matricula</label>
+		    <input type="text"  th:field="*{matricula}" id="matricula" placeholder="Matricula">
+		    <label for="salario">Salario</label>
+		    <input type="text"  th:field="*{salario}" id="salario" placeholder="Salario">
+		    <label for="tipo">Tipo</label>
+		    <input type="text"  th:field="*{tipo}" id="tipo" placeholder="Tipo">
+		    <label for="especialidade">Especialidade</label>
+				<select id="especialidade" name="especialidade">
+		        	<option value="">Selecione</option>
+		    		<div th:each="especialidade : ${especialidades}">
+		        		<option value="${especialidade}" th:text="${especialidade}"></option>
+		        	 </div>
+				</select>
+			<label for="crm">CRM</label>
+		    <input type="text"  th:field="*{crm}" id="crm" placeholder="CRM">
+		
+		    
+		    
+		    <button>enviar</button>
+		     
         </form>
     </div>
 </body>

@@ -8,7 +8,7 @@
 <body>
 <div align="center">
     <h1>Enfermeiros</h1>
-    <a href="/new">Criar novo Enfermeiro</a>
+    <a href="/enfermeiros/inserir">Criar novo Enfermeiro</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -27,22 +27,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="product : ${listProducts}">
-                <td th:text="${product.id}">ID</td>
-                <td th:text="${product.name}">Nome</td>
-                <td th:text="${product.brand}">Data de Nascimento</td>
-                <td th:text="${product.madein}">sexo</td>
-                <td th:text="${product.price}">telefone</td>
-                <td th:text="${product.price}">cpf</td>
-                <td th:text="${product.price}">salario</td>
-                <td th:text="${product.price}">matricula</td>
-                <td th:text="${product.price}">função</td>
-                <td th:text="${product.price}">especialidade</td>
-                <td th:text="${product.price}">coren</td>
+            <tr th:each="enfermeiro : ${enfermeiros}">
+                <td th:text="${enfermeiro.nome}">Nome</td>
+                <td th:text="${enfermeiro.dataNascimento}">Data de Nascimento</td>
+                <td th:text="${enfermeiro.sexo}">sexo</td>
+                <td th:text="${enfermeiro.telefone}">telefone</td>
+                <td th:text="${enfermeiro.cpf}">cpf</td>
+                <td th:text="${enfermeiro.salario}">salario</td>
+                <td th:text="${enfermeiro.matricula}">matricula</td>
+                <td th:text="${enfermeiro.funcao}">função</td>
+                <td th:text="${enfermeiro.especialidade}">especialidade</td>
+                <td th:text="${enfermeiro.coren}">coren</td>
                 <td>
-                    <a th:href="/@{'/edit/' + ${product.id}}">Editar</a>
+                   <a th:href="@{/enfermeiros/editar/{id}(id=${enfermeiro.idPessoa})}">Editar</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="/@{'/delete/' + ${product.id}}">Deletar</a>
+                    <a th:href="@{/enfermeiros/delete/{id}(id=${enfermeiro.idPessoa})}">Deletar</a>
                 </td>
             </tr>
         </tbody>

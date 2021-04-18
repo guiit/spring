@@ -8,7 +8,7 @@
 <body>
 <div align="center">
     <h1>Médicos</h1>
-    <a href="/new">Criar novo Médico</a>
+    <a href="/medicos/inserir">Criar novo Médico</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -27,22 +27,21 @@
             </tr>
         </thead>
         <tbody>
-            <tr th:each="product : ${listProducts}">
-                <td th:text="${product.id}">ID</td>
-                <td th:text="${product.name}">Nome</td>
-                <td th:text="${product.brand}">Data de Nascimento</td>
-                <td th:text="${product.madein}">sexo</td>
-                <td th:text="${product.price}">telefone</td>
-                <td th:text="${product.price}">cpf</td>
-                <td th:text="${product.price}">salario</td>
-                <td th:text="${product.price}">matricula</td>
-                <td th:text="${product.price}">função</td>
-                <td th:text="${product.price}">especialidade</td>
-                <td th:text="${product.price}">crm</td>
+            <tr th:each="medico : ${medicos}">
+                <td th:text="${medico.nome}">Nome</td>
+                <td th:text="${medico.dataNascimento}">Data de Nascimento</td>
+                <td th:text="${medico.sexo}">sexo</td>
+                <td th:text="${medico.telefone}">telefone</td>
+                <td th:text="${medico.cpf}">cpf</td>
+                <td th:text="${medico.salario}">salario</td>
+                <td th:text="${medico.matricula}">matricula</td>
+                <td th:text="${medico.funcao}">função</td>
+                <td th:text="${medico.especialidade}">especialidade</td>
+                <td th:text="${medico.crm}">crm</td>
                 <td>
-                    <a th:href="/@{'/edit/' + ${product.id}}">Editar</a>
+                    <a th:href="@{/medicos/editar/{id}(id=${medico.idPessoa})}">Editar</a>
                     &nbsp;&nbsp;&nbsp;
-                    <a th:href="/@{'/delete/' + ${product.id}}">Deletar</a>
+                    <a th:href="@{/medicos/delete/{id}(id=${medico.idPessoa})}">Deletar</a>
                 </td>
             </tr>
         </tbody>
