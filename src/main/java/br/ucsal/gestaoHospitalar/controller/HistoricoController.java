@@ -12,69 +12,68 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.ucsal.gestaoHospitalar.entity.Historico;
-import br.ucsal.gestaoHospitalar.entity.Procedimento;
 import br.ucsal.gestaoHospitalar.service.HistoricoService;
-import br.ucsal.gestaoHospitalar.service.PacienteService;
 
 @Controller
 @RequestMapping("/historico")
 public class HistoricoController {
 	@Autowired
 	private HistoricoService service;
-	@GetMapping("/consultar")
+	@GetMapping()
 	public String exibirFormConsultar(Model model) {
 		
-		return "consultar-historico";
-	}
-	
-	@PostMapping("/consultar/{id}")
-	public String consultarHistorico(@PathVariable(name = "id") Long id, Model model) {
-		Historico historico = service.getHistorico(id);
-			    
-		if(historico == null)
-			throw new IllegalArgumentException("Não existe um histórico no sistema com este ID: "+id);
-		model.addAttribute("historico", historico);
-		return "consultar-historico";
-	}
-	
-	@GetMapping("/list")
-	public String exibirFormHistorico(Model model) {
 		List<Historico> historicos = service.findAll();
 		model.addAttribute("historicos", historicos);
 		
-		return "historico-form";
+		return "historico";
+	}
+	
+	@GetMapping("/inserir")
+	public String exibirFormHistorico(Model model) {
+		
+		model.addAttribute("historico", new Historico());
+		
+		return "new_historico";
 	}
 	
 	@PostMapping("/inserir")
 	public String inserirHistorico(@Validated Historico historico, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-            return "historico-form";
+            return "redirect:/";
         }
 		service.insert(historico);
-		return "redirect:/consultar-historico";
+		return "redirect:/historico";
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String getHistorico(@PathVariable("id") Long id, Model model) {
+	public String get(@PathVariable("id") Long id, Model model) {
+
 		Historico historico = service.getHistorico(id);
-		
 		if(historico == null)
-			throw new IllegalArgumentException("Não existe um histórico no sistema com este ID: "+id);
-		
+			throw new IllegalArgumentException("Não existe histórico no sistema com este ID: "+id);
 		model.addAttribute("historico", historico);
-		return "editar-historico";
+
+
+
+		return "editar_historico";
 	}
 	
 	@PostMapping("/editar/{id}")
 	public String editarHistorico(@PathVariable("id") long id, @Validated Historico historico, 
 			  BindingResult result, Model model) {
-		 if (result.hasErrors()) {
-			historico.setId(id);
-			return "editar-historico";
-		}
-			        
 		service.insert(historico);
-		return "redirect:/consultar-historico";
+		
+		return "redirect:/historico";
+	}
+	
+	@GetMapping("/by/deletar/{id}")
+	public String deletarHistorico(@PathVariable("id") long id, Model model) {
+		Historico historico = service.getHistorico(id);
+		if(historico == null)
+			throw new IllegalArgumentException("Não existe historico no sistema com este ID: "+id);
+		service.delete(historico);
+		
+		return "redirect:/historico";
 	}
 	
 	

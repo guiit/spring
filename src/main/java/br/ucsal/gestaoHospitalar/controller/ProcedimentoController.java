@@ -12,67 +12,68 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.ucsal.gestaoHospitalar.entity.Procedimento;
-import br.ucsal.gestaoHospitalar.service.PacienteService;
 import br.ucsal.gestaoHospitalar.service.ProcedimentoService;
 
 @Controller
 @RequestMapping("/procedimento")
 public class ProcedimentoController {
-    @Autowired
-    private ProcedimentoService service;
-	@GetMapping("/consultar")
+	@Autowired
+	private ProcedimentoService service;
+	@GetMapping()
 	public String exibirFormConsultar(Model model) {
 		
-		return "consultar-procedimento";
-	}
-	
-	@PostMapping("/consultar/{id}")
-	public String consultarProcedimento(@PathVariable(name = "id") Long id, Model model) {
-		Procedimento procedimento = service.getProcedimento(id);
-			    
-		if(procedimento == null)
-			throw new IllegalArgumentException("Não existe um procedimento no sistema com este ID: "+id);
-		model.addAttribute("procedimento", procedimento);
-		return "consultar-procedimento";
-	}
-	
-	@GetMapping("/list")
-	public String exibirFormProcedimento(Model model) {
 		List<Procedimento> procedimentos = service.findAll();
 		model.addAttribute("procedimentos", procedimentos);
-		return "procedimento-form";
+		
+		return "procedimento";
+	}
+	
+	@GetMapping("/inserir")
+	public String exibirFormProcedimento(Model model) {
+		
+		model.addAttribute("procedimento", new Procedimento());
+		
+		return "new_procedimento";
 	}
 	
 	@PostMapping("/inserir")
 	public String inserirProcedimento(@Validated Procedimento procedimento, BindingResult result, Model model) {
 		if (result.hasErrors()) {
-            return "procedimento-form";
+            return "redirect:/";
         }
 		service.insert(procedimento);
-		return "redirect:/consultar-procedimento";
+		return "redirect:/procedimento";
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String getProcedimento(@PathVariable("id") Long id, Model model) {
+	public String get(@PathVariable("id") Long id, Model model) {
+
 		Procedimento procedimento = service.getProcedimento(id);
-		
 		if(procedimento == null)
-			throw new IllegalArgumentException("Não existe um procedimento no sistema com este ID: "+id);
-		
+			throw new IllegalArgumentException("Não existe procedimento no sistema com este ID: "+id);
 		model.addAttribute("procedimento", procedimento);
-		return "editar-procedimento";
+
+
+
+		return "editar_procedimento";
 	}
 	
 	@PostMapping("/editar/{id}")
-	public String editarProcedimento(@PathVariable("id") Long id, @Validated Procedimento procedimento, 
+	public String editarProcedimento(@PathVariable("id") long id, @Validated Procedimento procedimento, 
 			  BindingResult result, Model model) {
-		 if (result.hasErrors()) {
-			 procedimento.setId(id);
-			return "editar-procedimento";
-		}
-			        
-		service.update(procedimento);
-		return "redirect:/consultar-procedimento";
+		service.insert(procedimento);
+		
+		return "redirect:/procedimento";
+	}
+	
+	@GetMapping("/by/deletar/{id}")
+	public String deletarProcedimento(@PathVariable("id") long id, Model model) {
+		Procedimento procedimento = service.getProcedimento(id);
+		if(procedimento == null)
+			throw new IllegalArgumentException("Não existe procedimento no sistema com este ID: "+id);
+		service.delete(procedimento);
+		
+		return "redirect:/procedimento";
 	}
 	
 	

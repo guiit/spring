@@ -17,6 +17,7 @@ import br.ucsal.gestaoHospitalar.service.MedicamentoService;
 @Controller
 @RequestMapping("/medicamentos")
 public class MedicamentoController {
+	
 	@Autowired
 	private MedicamentoService service;
 	@GetMapping()

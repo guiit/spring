@@ -1,20 +1,15 @@
 package br.ucsal.gestaoHospitalar.entity;
 
-import java.sql.Date;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Espaco {
+public class Espaco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
