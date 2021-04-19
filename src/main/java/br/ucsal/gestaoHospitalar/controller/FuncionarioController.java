@@ -11,11 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import br.ucsal.gestaoHospitalar.entity.Funcionario;
-import br.ucsal.gestaoHospitalar.entity.Paciente;
 import br.ucsal.gestaoHospitalar.service.FuncionarioService;
-import br.ucsal.gestaoHospitalar.service.HistoricoService;
 
 @Controller
 @RequestMapping("/funcionario")

@@ -20,7 +20,7 @@ public class Endereco {
 		return idEndereco;
 	}
 	public void setIdEndereco(Long Id) {
-		this.idEndereco = idEndereco;
+		this.idEndereco = Id;
 	}
 	public String getRua() {
 		return rua;
