@@ -16,7 +16,7 @@
 		    <input type="text" th:field="*{nome}"  id="nome" placeholder="Nome">
 		    </div>
 		    <label for="dataNasc">Data de nascimento</label>
-		    <input type="text" th:field="*{dataNascimento}"  id="dataNasc" placeholder="Data de nascimento">
+		    <input type="date" th:field="*{dataNascimento}"  id="dataNasc" placeholder="Data de nascimento">
 		    <label for="sexo">Sexo</label>
 		    <input type="text" th:field="*{sexo}"  id="sexo" placeholder="Sexo">
 		    <label for="telefone">Telefone</label>
@@ -29,15 +29,13 @@
 		    <input type="text"  th:field="*{matricula}" id="matricula" placeholder="Matricula">
 		    <label for="salario">Salario</label>
 		    <input type="text"  th:field="*{salario}" id="salario" placeholder="Salario">
-		    <label for="tipo">Tipo</label>
-		    <input type="text"  th:field="*{tipo}" id="tipo" placeholder="Tipo">
-		    <label for="especialidade">Especialidade</label>
+		    <!--label for="especialidade">Especialidade</label>
 				<select id="especialidade" name="especialidade">
 		        	<option value="">Selecione</option>
 		    		<div th:each="especialidade : ${especialidades}">
-		        		<option value="${especialidade}" th:text="${especialidade}"></option>
+		        		<option value="${especialidade.getDescricao()}" th:text="${especialidade.getDescricao()}"></option>
 		        	 </div>
-				</select>
+				</select-->
 			<label for="crm">CRM</label>
 		    <input type="text"  th:field="*{crm}" id="crm" placeholder="CRM">
 		

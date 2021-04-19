@@ -17,6 +17,7 @@ import br.ucsal.gestaoHospitalar.entity.Enfermeiro;
 import br.ucsal.gestaoHospitalar.entity.Especialidade;
 import br.ucsal.gestaoHospitalar.entity.Funcionario;
 import br.ucsal.gestaoHospitalar.entity.Medico;
+import br.ucsal.gestaoHospitalar.service.EnfermeiroService;
 import br.ucsal.gestaoHospitalar.service.FuncionarioService;
 
 @Controller
@@ -24,7 +25,7 @@ import br.ucsal.gestaoHospitalar.service.FuncionarioService;
 public class EnfermeiroController {
 
 	@Autowired
-    private FuncionarioService service;
+    private EnfermeiroService service;
 	@GetMapping()
 	public String viewEnfermeiroPage(Model model) {
 		model.addAttribute("enfermeiros", service.findAll());
@@ -33,13 +34,7 @@ public class EnfermeiroController {
 
 	@GetMapping("/inserir")
 	public String exibirFormEnfermeiro(Model model) {
-		List<String> especialidades = new ArrayList();
-		especialidades.add(Especialidade.Anestegista.name());
-		especialidades.add(Especialidade.Cirurgião.name());
-		especialidades.add(Especialidade.Fisioterapeota.name());
-		especialidades.add(Especialidade.Psicologo.name());
-		
-		model.addAttribute("especialidades", especialidades);
+		model.addAttribute("especialidades", Especialidade.values());
 		model.addAttribute("enfermeiro", new Enfermeiro());
 		return "new_enfermeiro";
 	}
@@ -56,7 +51,7 @@ public class EnfermeiroController {
 	
 	@GetMapping("/editar/{id}")
 	public String editarEnfermeiro(@PathVariable("id") Long id, Model model) {
-		Enfermeiro enfermeiro = (Enfermeiro) service.getFuncionario(id);
+		Enfermeiro enfermeiro = service.getEnfermeiro(id);
 		
 		if(enfermeiro == null)
 			throw new IllegalArgumentException("Não existe paciente no sistema com este ID: "+id);
@@ -79,7 +74,7 @@ public class EnfermeiroController {
 	
 	@GetMapping("/delete/{id}")
 	public String deletarEnfermeiro(@PathVariable("id") Long id, Model model) {
-		Funcionario enfermeiro = service.getFuncionario(id);
+		Enfermeiro enfermeiro = service.getEnfermeiro(id);
 		if(enfermeiro != null)
 			service.delete(enfermeiro);
 			

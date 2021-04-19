@@ -1,5 +1,6 @@
 package br.ucsal.gestaoHospitalar.entity;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
@@ -13,10 +14,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class Pessoa {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) 
+public abstract class Pessoa implements Serializable {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	public Long idPessoa;
 	protected String nome;
 	protected Date dataNascimento;

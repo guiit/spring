@@ -13,7 +13,6 @@
     <table border="1" cellpadding="10">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>Nome</th>
                 <th>Data de Nascimento</th>
                 <th>sexo</th>
@@ -22,8 +21,8 @@
                 <th>salario</th>
                 <th>matricula</th>
                 <th>função</th>
-                <th>especialidade</th>
-                <th>CRM</th>
+                <!-- th>especialidade</th-->
+                <th>CRM</th>   
             </tr>
         </thead>
         <tbody>
@@ -36,7 +35,7 @@
                 <td th:text="${medico.salario}">salario</td>
                 <td th:text="${medico.matricula}">matricula</td>
                 <td th:text="${medico.funcao}">função</td>
-                <td th:text="${medico.especialidade}">especialidade</td>
+                <!--td th:text="${medico.especialidade}">especialidade</td-->
                 <td th:text="${medico.crm}">crm</td>
                 <td>
                     <a th:href="@{/medicos/editar/{id}(id=${medico.idPessoa})}">Editar</a>
