@@ -38,7 +38,7 @@ public class PacienteController {
             return "index";
         }
 		service.insert(paciente);
-		return "redirect:/";
+		return "redirect:/pacientes";
 	}
 	
 	

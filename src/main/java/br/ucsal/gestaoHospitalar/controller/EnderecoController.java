@@ -72,9 +72,9 @@ public class EnderecoController {
 		
 		if(endereco == null)
 			throw new IllegalArgumentException("Não existe paciente no sistema com este ID: "+id);
+		service.delete(endereco);
 		
-		model.addAttribute("endereco", endereco);
-		return "redirect:/pacientes";
+		return "redirect:/enderecos";
 	}
 	
 }

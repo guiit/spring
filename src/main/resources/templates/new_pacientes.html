@@ -11,15 +11,15 @@
         <br />
       <form action="/pacientes/inserir" th:object="${paciente}" method="post">
     <label for="nome">Name</label>
-    <input type="text" th:field="*{nome}" id="nome" placeholder="Nome">
+    <input required type="text" th:field="*{nome}" id="nome" placeholder="Nome">
     <label for="cpf">Cpf</label>
-    <input type="text" th:field="*{cpf}" id="cpf" placeholder="Cpf">
+    <input required type="text" th:field="*{cpf}" id="cpf" placeholder="Cpf">
     <label for="telefone">Telefone</label>
-    <input type="text" th:field="*{telefone}" id="telefone" placeholder="Telefone">
+    <input required type="text" th:field="*{telefone}" id="telefone" placeholder="Telefone">
     <label for="datadenascimento">Data de Nascimento</label>
-    <input type="date" th:field="*{dataNascimento}" id="datadenascimento" placeholder="Data de Nascimento">
+    <input required type="date" th:field="*{dataNascimento}" id="datadenascimento" placeholder="Data de Nascimento">
     <label for="sexo">Sexo</label>
-    <input type="text" th:field="*{sexo}" id="sexo" placeholder="Sexo">
+    <input required type="text" th:field="*{sexo}" id="sexo" placeholder="Sexo">
     
     
     <button>enviar</button>

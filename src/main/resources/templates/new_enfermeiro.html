@@ -13,22 +13,22 @@
     
 		    <div>
 		    <label for="nome">Nome</label>
-		    <input type="text" th:field="*{nome}"  id="nome" placeholder="Nome">
+		    <input required type="text" th:field="*{nome}"  id="nome" placeholder="Nome">
 		    </div>
 		    <label for="dataNasc">Data de nascimento</label>
-		    <input type="date" th:field="*{dataNascimento}"  id="dataNasc" placeholder="Data de nascimento">
+		    <input required type="date" th:field="*{dataNascimento}"  id="dataNasc" placeholder="Data de nascimento">
 		    <label for="sexo">Sexo</label>
-		    <input type="text" th:field="*{sexo}"  id="sexo" placeholder="Sexo">
+		    <input required type="text" th:field="*{sexo}"  id="sexo" placeholder="Sexo">
 		    <label for="telefone">Telefone</label>
-		    <input type="text" th:field="*{telefone}"  id="telefone" placeholder="Telefone">                          
+		    <input required type="text" th:field="*{telefone}"  id="telefone" placeholder="Telefone">                          
 		    <label for="cpf">CPF</label>
-		    <input type="text" th:field="*{cpf}"  id="cpf" placeholder="CPF">
+		    <input required type="text" th:field="*{cpf}"  id="cpf" placeholder="CPF">
 		    <label for="funcao">Função</label>
-		    <input type="text" th:field="*{funcao}"  id="funcao" placeholder="Funcao">
+		    <input required type="text" th:field="*{funcao}"  id="funcao" placeholder="Funcao">
 		    <label for="matricula">Matricula</label>
-		    <input type="text"  th:field="*{matricula}" id="matricula" placeholder="Matricula">
+		    <input required type="text"  th:field="*{matricula}" id="matricula" placeholder="Matricula">
 		    <label for="salario">Salario</label>
-		    <input type="text"  th:field="*{salario}" id="salario" placeholder="Salario">
+		    <input required type="text"  th:field="*{salario}" id="salario" placeholder="Salario">
 		     <!--label for="especialidade">Especialidade</label>
 				<select id="especialidade" name="especialidade">
 		        	<option value="">Selecione</option>
@@ -37,7 +37,7 @@
 		        	 </div>
 				</select-->
 			<label for="coren">COREN</label>
-		    <input type="text"  th:field="*{coren}" id="coren" placeholder="COREN">
+		    <input required type="text"  th:field="*{coren}" id="coren" placeholder="COREN">
 		
 		    
 		    
