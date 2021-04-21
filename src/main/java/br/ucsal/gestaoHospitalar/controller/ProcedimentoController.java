@@ -1,5 +1,6 @@
 package br.ucsal.gestaoHospitalar.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import br.ucsal.gestaoHospitalar.entity.Enfermeiro;
+import br.ucsal.gestaoHospitalar.entity.Espaco;
+import br.ucsal.gestaoHospitalar.entity.Funcionario;
+import br.ucsal.gestaoHospitalar.entity.Medico;
 import br.ucsal.gestaoHospitalar.entity.Procedimento;
+import br.ucsal.gestaoHospitalar.service.EnfermeiroService;
+import br.ucsal.gestaoHospitalar.service.EspacoService;
+import br.ucsal.gestaoHospitalar.service.MedicoService;
 import br.ucsal.gestaoHospitalar.service.ProcedimentoService;
 
 @Controller
@@ -19,19 +28,30 @@ import br.ucsal.gestaoHospitalar.service.ProcedimentoService;
 public class ProcedimentoController {
 	@Autowired
 	private ProcedimentoService service;
+	private EspacoService serviceEs;
+	private MedicoService serviceM;
+	private EnfermeiroService serviceEn;
 	@GetMapping()
-	public String exibirFormConsultar(Model model) {
-		
+	public String exibirConsultar(Model model) {
 		List<Procedimento> procedimentos = service.findAll();
 		model.addAttribute("procedimentos", procedimentos);
 		
-		return "procedimento";
+		return "procedimentos";
 	}
 	
 	@GetMapping("/inserir")
 	public String exibirFormProcedimento(Model model) {
+		List<Medico>medicos = serviceM.findAll();
+		List<Enfermeiro> enfermeiros = serviceEn.findAll();
+		List<Funcionario> funcionarios = new ArrayList();
+		funcionarios.addAll(medicos);
+		funcionarios.addAll(enfermeiros);
+		
+		List<Espaco> espacos = serviceEs.findAll();
 		
 		model.addAttribute("procedimento", new Procedimento());
+		model.addAttribute("funcionarios", funcionarios);
+		model.addAttribute("espacos", espacos);
 		
 		return "new_procedimento";
 	}
@@ -42,7 +62,7 @@ public class ProcedimentoController {
             return "redirect:/";
         }
 		service.insert(procedimento);
-		return "redirect:/procedimento";
+		return "redirect:/procedimentos";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -51,9 +71,19 @@ public class ProcedimentoController {
 		Procedimento procedimento = service.getProcedimento(id);
 		if(procedimento == null)
 			throw new IllegalArgumentException("Não existe procedimento no sistema com este ID: "+id);
-		model.addAttribute("procedimento", procedimento);
-
-
+		
+		List<Medico>medicos = serviceM.findAll();
+		List<Enfermeiro> enfermeiros = serviceEn.findAll();
+		List<Funcionario> funcionarios = new ArrayList();
+		funcionarios.addAll(medicos);
+		funcionarios.addAll(enfermeiros);
+		
+		List<Espaco> espacos = serviceEs.findAll();
+		
+		model.addAttribute("procedimento", new Procedimento());
+		model.addAttribute("funcionarios", funcionarios);
+		model.addAttribute("espacos", espacos);
+		
 
 		return "editar_procedimento";
 	}
@@ -66,14 +96,14 @@ public class ProcedimentoController {
 		return "redirect:/procedimento";
 	}
 	
-	@GetMapping("/by/deletar/{id}")
+	@GetMapping("/deletar/{id}")
 	public String deletarProcedimento(@PathVariable("id") long id, Model model) {
 		Procedimento procedimento = service.getProcedimento(id);
 		if(procedimento == null)
 			throw new IllegalArgumentException("Não existe procedimento no sistema com este ID: "+id);
 		service.delete(procedimento);
 		
-		return "redirect:/procedimento";
+		return "redirect:/procedimentos";
 	}
 	
 	
