@@ -7,7 +7,7 @@
 </head>
 <body>
     <div align="center">
-        <h1>Cadastrar novo Espaço</h1>
+        <h1>Editar Espaço</h1>
         <br />
         <form action="/espacos/inserir"  th:object="${espaco}" method="post">
     
@@ -23,6 +23,7 @@
 		        		<option value="${tipo}" th:text="${tipo}" th:field="*{tipo}"></option>
 		        	 </div>
 				</select-->
+				<input type="hidden" th:field="*{id}" id="id">
 				 <button>enviar</button>
 		     
         </form>

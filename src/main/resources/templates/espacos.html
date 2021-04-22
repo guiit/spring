@@ -8,27 +8,25 @@
 <body>
 <div align="center">
     <h1>Espaços</h1>
-    <a href="/new">Criar novo Espaço</a>
+    <a href="/espacos/inserir">Criar novo Espaço</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
             <tr>
-                <th>ID</th>
                 <th>tipo</th>
                 <th>sala</th>
                 <th>custo</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="product : ${listProducts}">
-                <td th:text="${product.id}">ID</td>
-                <td th:text="${product.name}">tipo</td>
-                <td th:text="${product.brand}">sala</td>
-                <td th:text="${product.madein}">custo</td>
+            <tr th:each="espaco : ${espacos}">
+                <td th:text="${espaco.tipo}">tipo</td>
+                <td th:text="${espaco.sala}">sala</td>
+                <td th:text="${espaco.custo}">custo</td>
                 <td>
-                    <a th:href="/@{'/edit/' + ${product.id}}">Editar</a>
-                    &nbsp;&nbsp;&nbsp;
-                    <a th:href="/@{'/delete/' + ${product.id}}">Deletar</a>
+                    <a th:href="@{/espacos/editar/{id}(id=${espaco.id})}">Editar</a>
+                    
+                    <a th:href="@{/espacos/deletar/{id}(id=${espaco.id})}">Deletar</a>
                 </td>
             </tr>
         </tbody>

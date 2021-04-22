@@ -8,7 +8,7 @@
 <body>
 <div align="center">
     <h1>Procedimento</h1>
-    <a href="/procedimento/inserir">Criar novo Procedimento</a>
+    <a href="/procedimentos/inserir">Criar novo Procedimento</a>
     <br/><br/>
     <table border="1" cellpadding="10">
         <thead>
@@ -17,7 +17,7 @@
                 <th>Inicio</th>
                 <th>Fim</th>
                 <th>Descrição</th>
-                <th>Custo total</th>
+                <!-- th>Custo total</th-->
             </tr>
         </thead>
         <tbody>
@@ -26,11 +26,11 @@
                 <td th:text="${procedimento.inicio}">Inicio</td>
                 <td th:text="${procedimento.fim}">Fim</td>
                 <td th:text="${procedimento.descricao}">Descrição</td>
-                <td th:text="${procedimento.espaco[0].custo}">Custo total</td>
+                <!-- td th:text="${procedimento.espaco[0].custo}">Custo total</td-->
                 <td>
-                    <a th:href="@{/procedimento/editar/{id}(id=${procedimento.id})}">Editar</a>
+                    <a th:href="@{/procedimentos/editar/{id}(id=${procedimento.id})}">Editar</a>
                     
-                    <a th:href="@{/procedimento/deletar/{id}(id=${procedimento.id})}">Deletar</a>
+                    <a th:href="@{/procedimentos/deletar/{id}(id=${procedimento.id})}">Deletar</a>
                 </td>
             </tr>
         </tbody>

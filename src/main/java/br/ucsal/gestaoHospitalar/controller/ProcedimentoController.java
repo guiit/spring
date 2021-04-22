@@ -18,19 +18,25 @@ import br.ucsal.gestaoHospitalar.entity.Espaco;
 import br.ucsal.gestaoHospitalar.entity.Funcionario;
 import br.ucsal.gestaoHospitalar.entity.Medico;
 import br.ucsal.gestaoHospitalar.entity.Procedimento;
+import br.ucsal.gestaoHospitalar.entity.TipoProcedimento;
 import br.ucsal.gestaoHospitalar.service.EnfermeiroService;
 import br.ucsal.gestaoHospitalar.service.EspacoService;
 import br.ucsal.gestaoHospitalar.service.MedicoService;
 import br.ucsal.gestaoHospitalar.service.ProcedimentoService;
 
 @Controller
-@RequestMapping("/procedimento")
+@RequestMapping("/procedimentos")
 public class ProcedimentoController {
 	@Autowired
 	private ProcedimentoService service;
+	@Autowired
 	private EspacoService serviceEs;
+	@Autowired
 	private MedicoService serviceM;
+	@Autowired
 	private EnfermeiroService serviceEn;
+	
+	
 	@GetMapping()
 	public String exibirConsultar(Model model) {
 		List<Procedimento> procedimentos = service.findAll();
@@ -41,6 +47,7 @@ public class ProcedimentoController {
 	
 	@GetMapping("/inserir")
 	public String exibirFormProcedimento(Model model) {
+		
 		List<Medico>medicos = serviceM.findAll();
 		List<Enfermeiro> enfermeiros = serviceEn.findAll();
 		List<Funcionario> funcionarios = new ArrayList();
@@ -52,6 +59,7 @@ public class ProcedimentoController {
 		model.addAttribute("procedimento", new Procedimento());
 		model.addAttribute("funcionarios", funcionarios);
 		model.addAttribute("espacos", espacos);
+		model.addAttribute("tipos", TipoProcedimento.values());
 		
 		return "new_procedimento";
 	}
@@ -59,6 +67,7 @@ public class ProcedimentoController {
 	@PostMapping("/inserir")
 	public String inserirProcedimento(@Validated Procedimento procedimento, BindingResult result, Model model) {
 		if (result.hasErrors()) {
+			
             return "redirect:/";
         }
 		service.insert(procedimento);
@@ -66,8 +75,11 @@ public class ProcedimentoController {
 	}
 	
 	@GetMapping("/editar/{id}")
-	public String get(@PathVariable("id") Long id, Model model) {
+	public String getFormEditar(@PathVariable("id") Long id, Model model) {
 
+		this.serviceEn = new EnfermeiroService();
+		this.serviceM = new MedicoService();
+		
 		Procedimento procedimento = service.getProcedimento(id);
 		if(procedimento == null)
 			throw new IllegalArgumentException("Não existe procedimento no sistema com este ID: "+id);
@@ -93,7 +105,7 @@ public class ProcedimentoController {
 			  BindingResult result, Model model) {
 		service.insert(procedimento);
 		
-		return "redirect:/procedimento";
+		return "redirect:/procedimentos";
 	}
 	
 	@GetMapping("/deletar/{id}")

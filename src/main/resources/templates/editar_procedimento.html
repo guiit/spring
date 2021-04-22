@@ -7,9 +7,9 @@
 </head>
 <body>
     <div align="center">
-        <h1>Cadastrar novo Procedimento</h1>
+        <h1>Editar Procedimento</h1>
         <br />
-        <form action="/procedimentos/inserir"  th:object="${procedimento}" method="post">
+        <form action="/procedimentos/editar"  th:object="${procedimento}" method="post">
     
 		    <!-- label for="tipo">Tipo</label>
 		    <select id="tipo" name="tipo">
@@ -24,22 +24,21 @@
 		    <input required type="date" th:field="*{fim}"  id="fim" placeholder="Data Final">
 		    <label for="sexo">Descrição</label>
 		    <input required type="text" th:field="*{descricao}"  id="descricao" placeholder="Descricao">
-		    
-		     <!-- label for="funcionario">Funcionarios</label>
+		    <!--label for="funcionario">Funcionarios</label>
 				<select id="funcionario" name="funcionario">
 		        	<option value="">Selecione</option>
 		    		<div th:each="funcionario : ${funcionarios}">
-		        		<option value="${funcionario.idPessoa}" th:text="${funcionario.nome}"></option>
+		        		<option value="${funcionarios}" th:text="${funcionarios}"></option>
 		        	 </div>
-				</select>
-				<label for="espaco">Espaços</label>
+				</select-->
+				<!--label for="espaco">Espaços</label>
 				<select id="espaco" name="espaco">
 		        	<option value="">Selecione</option>
 		    		<div th:each="espaco : ${espacos}">
-		        		<option value="${espaco.id}" th:text="${espaco.sala}"></option>
+		        		<option value="${espaco}" th:text="${espaco}"></option>
 		        	 </div>
 				</select-->
-			
+			<input type="hidden" th:field="*{id}" id="id">
 		    <button>enviar</button>
 		     
 		</form>

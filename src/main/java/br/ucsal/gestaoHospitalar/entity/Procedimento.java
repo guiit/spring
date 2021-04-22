@@ -23,7 +23,7 @@ public class Procedimento {
 	protected Funcionario[] funcionario;
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "espacoId")
-	protected Espaco[] Espaco;
+	protected Espaco[] espaco;
 	protected Date fim;
 	protected String cpf;
 	protected Date inicio;

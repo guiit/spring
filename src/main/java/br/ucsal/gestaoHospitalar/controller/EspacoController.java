@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import br.ucsal.gestaoHospitalar.entity.Espaco;
+import br.ucsal.gestaoHospitalar.entity.TipoEspaco;
 import br.ucsal.gestaoHospitalar.service.EspacoService;
 
 @Controller
-@RequestMapping("/espaco")
+@RequestMapping("/espacos")
 public class EspacoController {
 	@Autowired
 	private EspacoService service;
@@ -25,13 +26,14 @@ public class EspacoController {
 		List<Espaco> espacos = service.findAll();
 		model.addAttribute("espacos", espacos);
 		
-		return "espaco";
+		return "espacos";
 	}
 	
 	@GetMapping("/inserir")
 	public String exibirFormEspaco(Model model) {
 		
 		model.addAttribute("espaco", new Espaco());
+		model.addAttribute("tipos", TipoEspaco.values());
 		
 		return "new_espaco";
 	}
@@ -42,7 +44,7 @@ public class EspacoController {
             return "redirect:/";
         }
 		service.insert(espaco);
-		return "redirect:/espaco";
+		return "redirect:/espacos";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -52,7 +54,7 @@ public class EspacoController {
 		if(espaco == null)
 			throw new IllegalArgumentException("Não existe espaço no sistema com este ID: "+id);
 		model.addAttribute("espaco", espaco);
-
+		model.addAttribute("tipos", TipoEspaco.values());
 
 
 		return "editar_espaco";
@@ -63,17 +65,17 @@ public class EspacoController {
 			  BindingResult result, Model model) {
 		service.insert(espaco);
 		
-		return "redirect:/espaco";
+		return "redirect:/espacos";
 	}
 	
-	@GetMapping("/by/deletar/{id}")
+	@GetMapping("/deletar/{id}")
 	public String deletarEspaco(@PathVariable("id") long id, Model model) {
 		Espaco espaco = service.getEspaco(id);
 		if(espaco == null)
 			throw new IllegalArgumentException("Não existe espaço no sistema com este ID: "+id);
 		service.delete(espaco);
 		
-		return "redirect:/espaco";
+		return "redirect:/espacos";
 	}
 	
 	
